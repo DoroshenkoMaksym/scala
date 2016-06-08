@@ -3,19 +3,19 @@ def abs(x: Double) =
 
 def sqrt(x: Double) = {
 
-  def sqrtIter(guess: Double, x: Double): Double =
-    if (isGoodEnough(guess, x)) guess
+  def sqrtIter(guess: Double): Double =
+    if (isGoodEnough(guess)) guess
     else {
-      sqrtIter(makeBetter(guess, x), x)
+      sqrtIter(makeBetter(guess))
     }
 
-  def isGoodEnough(guess: Double, x: Double) =
+  def isGoodEnough(guess: Double) =
     abs(guess * guess - x) / x <= 0.001
 
-  def makeBetter(guess: Double, x: Double) =
+  def makeBetter(guess: Double) =
     (x / guess + guess) / 2
 
-  sqrtIter(1.0, x)
+  sqrtIter(1.0)
 }
 
 sqrt(0.01e-20)
